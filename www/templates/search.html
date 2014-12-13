@@ -4,6 +4,12 @@
   </ion-nav-buttons>
     <ion-content>
       <h1 class="searcher">Search</h1>
+      <form ng-submit="submit()">
+          Category: <input name="input" ng-model="new_query"/>
+          <input type="submit" id="submit" value="Submit" />
+
+          <p>new_query = {{new_query}}</p><br>
+      </form>
       <ul class="results">
           <li ng-repeat="result in results">
             <p>{{result}}</p>
