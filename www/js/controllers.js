@@ -1,19 +1,20 @@
-angular.module('starter.controllers', [])
+var datenite = angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
-})
-
-.controller('PlaylistsCtrl', function($scope) {
-
-    //try to do stuff with results in a structure like this?
-
-  // $scope.playlists = [
-  //   { title: 'ResA', id: 1 },
-  //   { title: 'ResB', id: 2 }
-  // ];
+datenite.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+datenite.controller('SearchCtrl', function($scope, $http){
+    $http.get('http://api.nytimes.com/svc/events/v2/listings.json?filters=category:Dance&date_range=2014-12-13%3A2014-12-31&api-key=3c9cba411d5c02c41b1d24aae1495dbe%3A8%3A70391628').success(function(data) {
+        $scope.results = data;
+      });
+})
+datenite.controller('BrowseCtrl',  [
+// function() {
+    console.log('browser')
+// }
+
+])
+
+// .controller('SearchCtrl', function($scope, $stateParams) {
+// });
