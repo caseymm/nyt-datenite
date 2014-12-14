@@ -38,14 +38,31 @@ datenite.controller('DirectionsCtrl', function($scope, $http){
 
 
 datenite.controller('SearchCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.new_query = 'Today';
+    today = new Date();
+    dd = today.getDate();
+    mm = today.getMonth()+1; //January is 0!
+    yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+    tomorrow = yyyy+'-'+mm+'-'+String(parseInt(dd)+1);
+
+    // $scope.new_query = 'Today';
+    $scope.date_start = today;
+    $scope.date_end = tomorrow;
     $scope.submit = function() {
-        if($scope.new_query){
-            $scope.newdate = '2014-12-13';
-            if(this.new_query === "Tomorrow"){
-                $scope.newdate = '2014-12-14';
-            }
-             $http.get('http://api.nytimes.com/svc/events/v2/listings.json?&limit=10000&date_range='+$scope.newdate+'%3A'+$scope.newdate+'&api-key=3c9cba411d5c02c41b1d24aae1495dbe%3A8%3A70391628').success(function(data) {
+        if($scope.date_start){
+            // $scope.newdate = '2014-12-13';
+            // if(this.new_query === "Tomorrow"){
+            //     $scope.newdate = '2014-12-14';
+            // }
+             $http.get('http://api.nytimes.com/svc/events/v2/listings.json?&limit=10000&date_range='+this.date_start+'%3A'+this.date_end+'&api-key=3c9cba411d5c02c41b1d24aae1495dbe%3A8%3A70391628').success(function(data) {
                 //  console.log(data.results);
             $scope.results = data.results;
             results_cat = [];
@@ -77,17 +94,6 @@ datenite.controller('SearchCtrl', ['$scope', '$http', function($scope, $http) {
           });
         }
       };
-
-   //   $scope.groups = [];
-   // for (var i=0; i<5; i++) {
-   //   $scope.groups[i] = {
-   //     name: i,
-   //     items: []
-   //   };
-   //   for (var j=0; j<3; j++) {
-   //     $scope.groups[i].items.push(i + '-' + j);
-   //   }
-   // }
 
    /*
     * if given group is the selected group, deselect it

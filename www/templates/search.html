@@ -3,32 +3,22 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
     <ion-content>
-      <h1 class="searcher">Search</h1>
+      <h3 style="padding-top:15px;">Search for events</h3>
       <form ng-submit="submit()">
-          Date:
-          <select ng-model="new_query" >
-            <option selected>Today</option>
-            <option>Tomorrow</option>
-          </select>
-          <input style="display:none;" name="input" ng-model="new_query"/>
-          <input type="submit" id="submit" value="Submit" />
 
-          <p>new_query = {{new_query}}</p><br>
+          <input style="display:none;" name="input" ng-model="date_start"/>
+          <input style="display:none;" name="input" ng-model="date_end"/>
+
+          <label class="item item-input">
+              <span class="input-label">Start Date</span>
+              <input ng-model="date_start" type="date"/>
+          </label>
+          <label class="item item-input">
+              <span class="input-label">Start Date</span>
+              <input ng-model="date_end" type="date"/>
+          </label>
+          <button class="button button-block button-positive" type="submit" id="submit" value="Submit">Submit</button>
       </form>
-
-
-      <div class="list">
-
-        <label class="item item-input item-select">
-          <!-- <div class="input-label">
-            When?
-          </div> -->
-          <!-- <select>
-            <option selected>Today</option>
-            <option>Tomorrow</option>
-
-          </select> -->
-        </label>
 
       </div>
 
