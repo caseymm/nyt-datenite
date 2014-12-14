@@ -4,6 +4,7 @@ datenite.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 })
 
+<<<<<<< HEAD
 
 
 var venueClientID = "K2SCHC1JORKWLF3OCWGXY125Y2UXP4T2TQGCQUMLL0DCPHW5",
@@ -19,12 +20,7 @@ var directionsKey = "AIzaSyCMGssX4Zzimz6Pt1HdKO00IxIFXEHriKs";
 //origin is NYT venue, destination is venueLatvenueLong
 //could switch around
 
-datenite.controller('SearchCtrl', function($scope, $http){
-    $http.get('http://api.nytimes.com/svc/events/v2/listings.json?filters=category:Dance&date_range=2014-12-13%3A2014-12-31&api-key=3c9cba411d5c02c41b1d24aae1495dbe%3A8%3A70391628').success(function(data) {
-        $scope.results = data;
-        console.log(data);
-      });
-})
+
 
 datenite.controller('VenuesCtrl', function($scope, $http){
 	$http.get('https://api.foursquare.com/v2/venues/search?client_id='+venueClientID+'&client_secret='+venueClientSecret+'&v=20130815%20&ll='+venueLat+','+venueLng+'%20&query='+venueKeywords+'%20&section='+venueSection+'%20&radius='+venueRadius).success(function(venuesData){
@@ -39,6 +35,20 @@ datenite.controller('DirectionsCtrl', function($scope, $http){
 		console.log(directionsData);
 	});
 })
+
+
+datenite.controller('SearchCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.new_query = 'Dance';
+    $scope.submit = function() {
+        if($scope.new_query){
+            console.log(this.new_query)
+             $http.get('http://api.nytimes.com/svc/events/v2/listings.json?filters=category:'+this.new_query+'&date_range=2014-12-13%3A2014-12-31&api-key=3c9cba411d5c02c41b1d24aae1495dbe%3A8%3A70391628').success(function(data) {
+            $scope.results = data;
+          });
+        }
+      };
+
+}])
 
 datenite.controller('BrowseCtrl',  [
 // function() {
@@ -77,5 +87,9 @@ datenite.controller('AccordionCtrl', function($scope){
   $scope.isGroupShown = function(group) {
     return $scope.shownGroup === group;
   };
+<<<<<<< HEAD
   
 })
+=======
+})
+>>>>>>> d01b789bc77eed950adc9b48d6bb6f5761ac47fc
