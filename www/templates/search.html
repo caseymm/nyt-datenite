@@ -5,15 +5,52 @@
     <ion-content>
       <h1 class="searcher">Search</h1>
       <form ng-submit="submit()">
-          Category: <input name="input" ng-model="new_query"/>
+          Date:
+          <select ng-model="new_query" >
+            <option selected>Today</option>
+            <option>Tomorrow</option>
+          </select>
+          <input style="display:none;" name="input" ng-model="new_query"/>
           <input type="submit" id="submit" value="Submit" />
 
           <p>new_query = {{new_query}}</p><br>
       </form>
-      <ul class="results">
-          <li ng-repeat="result in results">
-            <p>{{result}}</p>
-          </li>
-        </ul>
+
+
+      <div class="list">
+
+        <label class="item item-input item-select">
+          <!-- <div class="input-label">
+            When?
+          </div> -->
+          <!-- <select>
+            <option selected>Today</option>
+            <option>Tomorrow</option>
+
+          </select> -->
+        </label>
+
+      </div>
+
+      <ion-list>
+          <div ng-repeat="cat in lol">
+            <ion-item class="item-stable"
+                      ng-click="toggleGroup(cat)"
+                      ng-class="{active: isGroupShown(group)}">
+                <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              &nbsp;
+              {{cat.name}}
+            </ion-item>
+            <ion-item class="item-accordion"
+                      ng-repeat="listing in cat.res"
+                      ng-show="isGroupShown(group)">
+
+                          <p>{{listing.event_name}}</p>
+                          <div ng-bind-html="listing.web_description"></div>
+
+            </ion-item>
+          </div>
+      </ion-list>
+
     </ion-content>
 </ion-view>
