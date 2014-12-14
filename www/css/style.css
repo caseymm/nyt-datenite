@@ -12,3 +12,10 @@
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
+.list .item.item-accordion {
+    line-height:20px;
+padding-bottom: 8px;
+}
+a{
+    text-decoration:none;
+}

@@ -3,7 +3,7 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
     <ion-content>
-      <h3 style="padding-top:15px;">Search for events</h3>
+      <h3 class="title" style="text-align:center;margin-top: 9px;">Find an event</h3>
       <form ng-submit="submit()">
 
           <input style="display:none;" name="input" ng-model="date_start"/>
@@ -17,7 +17,9 @@
               <span class="input-label">Start Date</span>
               <input ng-model="date_end" type="date"/>
           </label>
-          <button class="button button-block button-positive" type="submit" id="submit" value="Submit">Submit</button>
+          <div class="padding">
+              <button class="button button-block button-positive margin-default" style="margin-top:15px;" type="submit" id="submit" value="Submit">Submit</button>
+          </div>
       </form>
 
       </div>
@@ -35,8 +37,13 @@
                       ng-repeat="listing in cat.res"
                       ng-show="isGroupShown(cat)">
 
-                          <p>{{listing.event_name}}</p>
+                          <p><a href="{{listing.event_detail_url}}">{{listing.event_name}}</a></p>
                           <div ng-bind-html="listing.web_description"></div>
+                          <p>times pick: {{listing.times_pick}}</p>
+                          <p>free: {{listing.free}}</p>
+                          <p>kids: {{listing.kid_friendly}}</p>
+                          <p>Days: {{listing.recur_days}}</p>
+
 
             </ion-item>
           </div>

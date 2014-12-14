@@ -57,20 +57,17 @@ datenite.controller('SearchCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.date_start = today;
     $scope.date_end = tomorrow;
     $scope.submit = function() {
-        if($scope.date_start){
-            // $scope.newdate = '2014-12-13';
-            // if(this.new_query === "Tomorrow"){
-            //     $scope.newdate = '2014-12-14';
-            // }
-             $http.get('http://api.nytimes.com/svc/events/v2/listings.json?&limit=10000&date_range='+this.date_start+'%3A'+this.date_end+'&api-key=3c9cba411d5c02c41b1d24aae1495dbe%3A8%3A70391628').success(function(data) {
+        if($scope.date_start){ $http.get('http://api.nytimes.com/svc/events/v2/listings.json?&limit=10000&date_range='+this.date_start+'%3A'+this.date_end+'&api-key=3c9cba411d5c02c41b1d24aae1495dbe%3A8%3A70391628').success(function(data) {
                 //  console.log(data.results);
             $scope.results = data.results;
+            console.log(data.results.slice(0,1))
             results_cat = [];
             // all_cats = [];
             function isInArray(value, array) {
               return array.indexOf(value) > -1;
             }
             for (i in data.results){
+                data.results[i].recur_days = String(data.results[i].recur_days).replace('[','').replace(']','').split(',').join(', ');
                 if(data.results[i].category != "Movies"){
                     if (!(isInArray(data.results[i].category, results_cat))){
                         results_cat.push(data.results[i].category);
