@@ -73,7 +73,6 @@ datenite.controller('SearchCtrl', ['$scope', '$http', function($scope, $http) {
             }
             $scope.lol = cat_result_lol;
             // $scope.onelist = all_cats;
-            console.log(cat_result_lol)
 
           });
         }

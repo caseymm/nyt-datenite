@@ -36,14 +36,14 @@
           <div ng-repeat="cat in lol">
             <ion-item class="item-stable"
                       ng-click="toggleGroup(cat)"
-                      ng-class="{active: isGroupShown(group)}">
-                <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                      ng-class="{active: isGroupShown(cat)}">
+                <i class="icon" ng-class="isGroupShown(cat) ? 'ion-minus' : 'ion-plus'"></i>
               &nbsp;
               {{cat.name}}
             </ion-item>
             <ion-item class="item-accordion"
                       ng-repeat="listing in cat.res"
-                      ng-show="isGroupShown(group)">
+                      ng-show="isGroupShown(cat)">
 
                           <p>{{listing.event_name}}</p>
                           <div ng-bind-html="listing.web_description"></div>
