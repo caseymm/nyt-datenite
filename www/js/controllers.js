@@ -4,7 +4,7 @@ datenite.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 })
 
-<<<<<<< HEAD
+
 
 
 var venueClientID = "K2SCHC1JORKWLF3OCWGXY125Y2UXP4T2TQGCQUMLL0DCPHW5",
@@ -87,9 +87,7 @@ datenite.controller('AccordionCtrl', function($scope){
   $scope.isGroupShown = function(group) {
     return $scope.shownGroup === group;
   };
-<<<<<<< HEAD
+
   
 })
-=======
-})
->>>>>>> d01b789bc77eed950adc9b48d6bb6f5761ac47fc
+
