@@ -73,21 +73,22 @@ datenite.controller('SearchCtrl', ['$scope', '$http', function($scope, $http) {
             }
             $scope.lol = cat_result_lol;
             // $scope.onelist = all_cats;
+            console.log(cat_result_lol)
 
           });
         }
       };
 
-     $scope.groups = [];
-   for (var i=0; i<5; i++) {
-     $scope.groups[i] = {
-       name: i,
-       items: []
-     };
-     for (var j=0; j<3; j++) {
-       $scope.groups[i].items.push(i + '-' + j);
-     }
-   }
+   //   $scope.groups = [];
+   // for (var i=0; i<5; i++) {
+   //   $scope.groups[i] = {
+   //     name: i,
+   //     items: []
+   //   };
+   //   for (var j=0; j<3; j++) {
+   //     $scope.groups[i].items.push(i + '-' + j);
+   //   }
+   // }
 
    /*
     * if given group is the selected group, deselect it
@@ -122,6 +123,7 @@ datenite.controller('AccordionCtrl', function($scope){
 	$scope.groups = [];
   for (var i=0; i<5; i++) {
   $scope.groups = [];
+  }
   for (var i=0; i<10; i++) {
     $scope.groups[i] = {
       name: i,
